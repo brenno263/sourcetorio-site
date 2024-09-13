@@ -23,7 +23,7 @@ const { title } = Astro.props;
 <style is:global>
 	:root {
 		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
+		--accent-light: 200, 176, 226;
 		--accent-dark: 49, 10, 101;
 		--accent-gradient: linear-gradient(
 			45deg,
@@ -46,5 +46,28 @@ const { title } = Astro.props;
 			Bitstream Vera Sans Mono,
 			Courier New,
 			monospace;
+		border: 1px solid rgb(var(--accent-light));
+		border-radius: .3em;
+		background-color: #13151a;
+		padding: 5px;
 	}
+	.code-block {
+		display: block;
+		padding: 1rem;
+		margin: 0.5rem 0.2rem;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	
+	/* text classes */
+    .text-gradient {
+        background-image: var(--accent-gradient);
+        background-clip: text;
+        color: transparent;
+        background-size: 400%;
+        background-position: 0%;
+    }
 </style>
