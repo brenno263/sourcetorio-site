@@ -3,19 +3,23 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import CardSection from '../components/CardSection.astro';
 import Heading from '../components/Heading.astro';
+import { Countdown } from '../components/Countdown';
 ---
 
 <Layout title="Welcome to Astro.">
 	<main>
 		<Heading />
 		<CardSection>
-			<p>Sourcetorio is an unofficial Factorio Server for Source Allies, which is being created to celebrate the relase of the <a href="https://store.steampowered.com/app/645390/Factorio_Space_Age/">Factorio: Space Age DLC</a></p>
+			<p>Sourcetorio is an unofficial Factorio Server for Source Allies, which is being created to celebrate the release of the <a href="https://store.steampowered.com/app/645390/Factorio_Space_Age/">Factorio: Space Age DLC</a>.</p>
+			<p>The server will launch within minutes of the DLC release on <span class="text-gradient-animated">October 21, 2024</span></p>
+			<br/>
+			<Countdown releaseDateString='October 21, 2024 00:00:00' client:load/>
 		</CardSection>
 		<CardSection title="Getting Started">
 			<p>If you already own the game, awesome! You can skip ahead. If you don't - don't fret!! There's a couple things to know about your unfotunate, Factorioless condition.</p>
 			<ul>
 				<li>The game never goes on sale. This may sound like a bad thing, but at least you'll never be sitting around waiting for a sale, right?</li>
-				<li>You will need the DLC. This is specifically a <span class="text-gradient">Factorio: Space Age</span> server.</li>
+				<li>You will need the DLC. This is specifically a <span class="text-gradient-animated">Factorio: Space Age</span> server.</li>
 				<li>The game has no DRM, and the server will have Authentication disabled. This means you can very easily use someone else's shared game files if you like.</li>
 			</ul>
 		</CardSection>
@@ -29,7 +33,7 @@ import Heading from '../components/Heading.astro';
 			<br/>
 			<p>NO. That would be RIDICULOUS. This is VERY SERIOUS!</p>
 			<br/>
-			<p>Jokes aside, I'm not planning on banning anyone, so these rules serve more as guidelines for how to have the best time. I've played a LOT of <span class="text-gradient">Factorio</span>, and I have some opinions about how best to approach the game to have a good time.</p>
+			<p>Jokes aside, I'm not planning on banning anyone, so these rules serve more as guidelines for how to have the best time. I've played a LOT of <span class="text-gradient-animated">Factorio</span>, and I have some opinions about how best to approach the game to have a good time.</p>
 			<h3>Rule No. 1</h3>
 			<p>Please use Alt mode. If you press the "Alt" key it shows some helpful icons over machines that let you know what they're up to at a glance.</p>
 			
@@ -42,7 +46,7 @@ import Heading from '../components/Heading.astro';
 			<p style="font-size: 0.8rem">* space is actually limited to 4 trillion tiles. If your project needs more than that, please show me - that sounds awesome.</p>
 
 			<h3>Rule No. 3</h3>
-			<p>Please don't look up "optimal" designs or blueprints online. Your own design probably won't be <span class="text-gradient">MegaPerfect</span>, but it will be yours. The whole point of the game is to solve neat logistics puzzles - you wouldn't look up the solution to the Wordle, would you?</span></p>
+			<p>Please don't look up "optimal" designs or blueprints online. Your own design probably won't be <span class="text-gradient-animated">MegaPerfect</span>, but it will be yours. The whole point of the game is to solve neat logistics puzzles - you wouldn't look up the solution to the Wordle, would you?</span></p>
 
 		</CardSection>
 		<CardSection title="The Last Section">
@@ -90,7 +94,7 @@ import Heading from '../components/Heading.astro';
 		border-radius: 0.4rem;
 	}
 	a {
-		text-decoration: none;
+		text-decoration: underline;
 		background-image: var(--accent-gradient);
 		background-clip: text;
 		color: rgb(var(--accent-light));

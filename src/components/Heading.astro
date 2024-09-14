@@ -3,7 +3,7 @@
 ---
 <div class="page-header">
     <img class="header-logo" src="sourcetorio_logo.png" />
-    <h1>Welcome to <span class="text-gradient">Sourcetorio!</span></h1>
+    <h1>Welcome to <span class="text-gradient-animated">Sourcetorio!</span></h1>
 </div>
 
 <style>
@@ -14,25 +14,24 @@
         align-items: center;
         margin: 1rem;
     }
+	.header-logo {
+		width: 12rem;
+        max-width: 50vw;
+		display: inline;
+	}
+	.page-header h1 {
+		font-size: 4rem;
+		font-weight: 700;
+		line-height: 1;
+		text-align: left;
+    }
     @media(max-width: 600px) {
         .page-header {
             flex-direction: column;
         }
         .page-header h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
         }
-        
-    }
-	.header-logo {
-		max-width: 12rem;
-		height: 100%;
-		display: inline;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: left;
     }
 </style>
