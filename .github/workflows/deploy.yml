@@ -19,6 +19,7 @@ jobs:
 
       - name: try to tar some stuff
         run: |
+          pnpm i
           pnpm run build
           tar -czvf dist.tar.gz
           ls
