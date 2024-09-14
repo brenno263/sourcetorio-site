@@ -21,5 +21,6 @@ jobs:
         run: |
           pnpm i
           pnpm run build
-          tar -czvf dist.tar.gz dist
-          ls
+          RSYNC_PASSWORD=${{ secrets.SSH_PASS }}
+          rsync --recursive --delete ./dist ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST}}:/var/www/sourcetorio-site
+          
