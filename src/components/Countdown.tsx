@@ -1,7 +1,5 @@
 import classes from "./Countdown.module.css";
-import { createComputed, createMemo, createSignal, onCleanup, onMount } from "solid-js";
-
-const RELEASE_DATE = new Date("October 21, 2024 00:00:00");
+import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = 1000 * 60 * 60;
