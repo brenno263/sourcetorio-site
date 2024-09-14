@@ -1,0 +1,24 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: try to tar some stuff
+        run: |
+          pnpm run build
+          tar -czvf dist.tar.gz
+          ls
