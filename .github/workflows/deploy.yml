@@ -17,9 +17,18 @@ jobs:
         with:
           version: 9
 
-      - name: try to tar some stuff
+      - name: build
         run: |
           pnpm i
           pnpm run build
-          echo "${{ secrets.SSH_KEY }}" > id
-          rsync --recursive --delete --chmod=ugo=rX -e "ssh -i ./id" ./dist/ ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/var/www/sourcetorio-site
+
+      - name: rsync deployment
+        uses: burnett01/rsync-deployments@7.0.1
+        with:
+          switches: --recursive --delete --chmod=ugo-rX -vvvv
+          path: ./dist/
+          remote_path: /var/www/sourcetorio-site/
+          legacy_allow_rsa_hostkeys: "true"
+          remote_host: ${{ secrets.SSH_HOST }}
+          remote_user: ${{ secrets.SSH_USER }}
+          remote_key: ${{ secrets.SSH_KEY }}
