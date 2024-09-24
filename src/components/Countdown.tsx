@@ -7,10 +7,9 @@ const MINUTE = 1000 * 60;
 const SECOND = 1000;
 
 export function Countdown(props: {releaseDateString: string}) {
-    const releaseDateMs = createMemo(() => {
-        console.log("foo");
-        return Number(new Date(props.releaseDateString));
-    });
+    const releaseDateMs = createMemo(() => 
+        Number(new Date(props.releaseDateString))
+    );
     const getTimeLeft = () => {
         return releaseDateMs() - Number(new Date());
     }
@@ -22,7 +21,7 @@ export function Countdown(props: {releaseDateString: string}) {
     const msToMinutes = (ms: number) => Math.floor((ms % HOUR) / MINUTE);
     const msToSeconds = (ms: number) => Math.floor((ms % MINUTE) / SECOND);
 
-    const leftPadNumber = (n: number, digits: number) => {
+    const leftPadNumber = (digits: number, n: number) => {
         let str = String(n);
         while (str.length < digits) {
             str = "0" + str;
@@ -45,9 +44,14 @@ export function Countdown(props: {releaseDateString: string}) {
 
 
     return (
-        <div class={classes["container"]}>
-            <p class={classes.number}>{msToDays(ms())}:{leftPadNumber(msToHours(ms()), 2)}:{leftPadNumber(msToMinutes(ms()), 2)}:{leftPadNumber(msToSeconds(ms()), 2)}:{leftPadNumber(ms() % 1000, 3)}</p>
-            
+        <div classList={{[classes["container"]]: true, [classes["shaking"]]: ms() < DAY}}>
+            <p class={classes.number}>
+                {msToDays(ms())}
+                :{leftPadNumber(2, msToHours(ms()))}
+                :{leftPadNumber(2, msToMinutes(ms()))}
+                :{leftPadNumber(2, msToSeconds(ms()))}
+                :{leftPadNumber(3, ms() % 1000)}
+            </p>
         </div>
     );
 }

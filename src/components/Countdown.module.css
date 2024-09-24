@@ -8,4 +8,32 @@
 
 .number {
     font-size: 2rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.shaking {
+    animation: shaking 0.5s linear infinite;
+}
+
+@keyframes shaking {
+    0% {
+        transform: translate(-0.4rem, 0) rotate(-3deg);
+        scale: 1;
+    }
+    25% {
+        transform: translate(0.4rem, 0) rotate(0deg);
+        scale: 1.06;
+    }
+    50% {
+        transform: translate(-0.4rem, 0) rotate(3deg);
+        scale: 1;
+    }
+    75% {
+        transform: translate(0.4rem, 0) rotate(0deg);
+        scale: 1.06;
+    }
+    100% {
+        transform: translate(-0.4rem, 0) rotate(-3deg);
+        scale: 1;
+    }
 }
