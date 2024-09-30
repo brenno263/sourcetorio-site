@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal, onCleanup, onMount, type Component, type ParentComponent } from "solid-js";
+import { createEffect,  createSignal,  type ParentComponent } from "solid-js";
 import type { JSX } from "solid-js/h/jsx-runtime";
 
 const ANIMATION_DURATION = 1200;
@@ -12,15 +12,22 @@ const Collapser: ParentComponent<{open: boolean}> = (props) => {
     const [maxHeight, setMaxHeight] = createSignal<JSX.CSSProperties["max-height"]>(undefined);
     let divRef: HTMLDivElement | undefined;
 
-    const waitATick = async () => new Promise((res) => setTimeout(res, 1));
+    const waitATick = async () => new Promise((res) => setTimeout(res, 5));
 
     const show = async () => {
         setAnimStatus("opening");
         setCurrentlyOpen(true);
+
+        // set invisible & wait for apply
         setMaxHeight(0);
+        await waitATick();
+
+        // turn children on & wait for apply
         setRenderChildren(true);
         await waitATick();
-        divRef!.animate([{
+
+        // set animation + end hook & wait for apply
+        const showAnimHandle = divRef!.animate([{
             "height": "0px",
         }, {
             "height": `${divRef!.scrollHeight}px`,
@@ -29,22 +36,32 @@ const Collapser: ParentComponent<{open: boolean}> = (props) => {
             easing: "cubic-bezier(0.9, 0, 0.1, 1)",
             fill: "forwards",
         });
-        setTimeout(() => setAnimStatus("idle"), ANIMATION_DURATION);
+        setTimeout(() => {
+            setAnimStatus("idle");
+            showAnimHandle.cancel();
+        }, ANIMATION_DURATION + 10);
+        await waitATick();
+
+        // make things visible again so we can see the animation
+        setMaxHeight(undefined);
     }
 
     const hide = async () => {
         setAnimStatus("closing");
         setCurrentlyOpen(false);
-        divRef!.animate([{
+        const hideAnimHandle = divRef!.animate([{
             "height": `${divRef!.scrollHeight}px`,
         }, {
             "height": "0px",
         }], {
             duration: ANIMATION_DURATION,
             easing: "cubic-bezier(0.5, 1.3, 0.8, -1.3)",
-            fill: "forwards",
+            fill: "forwards"
         });
-        setTimeout(() => setAnimStatus("idle"), ANIMATION_DURATION);
+        setTimeout(() => {
+            setAnimStatus("idle");
+            hideAnimHandle.cancel();
+        }, ANIMATION_DURATION + 10);
     }
 
     createEffect(() => {
@@ -66,8 +83,7 @@ const Collapser: ParentComponent<{open: boolean}> = (props) => {
     return (
         <div 
             style={{
-                // transition: "max-height 1.2s ease-in-out",
-                // "max-height": maxHeight(),
+                "max-height": maxHeight(),
                 overflow: animStatus() !== "idle" || !currrentlyOpen() ? "hidden" : undefined,
             }}
             ref={divRef}
