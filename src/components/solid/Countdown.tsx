@@ -1,12 +1,12 @@
 import classes from "./Countdown.module.css";
-import { createMemo, createSignal, onCleanup, onMount } from "solid-js";
+import { createMemo, createSignal, onCleanup, onMount, type Component } from "solid-js";
 
 const DAY = 1000 * 60 * 60 * 24;
 const HOUR = 1000 * 60 * 60;
 const MINUTE = 1000 * 60;
 const SECOND = 1000;
 
-export function Countdown(props: {releaseDateString: string}) {
+const Countdown: Component<{releaseDateString: string}> = (props) => {
     const releaseDateMs = createMemo(() => 
         Number(new Date(props.releaseDateString))
     );
@@ -55,3 +55,5 @@ export function Countdown(props: {releaseDateString: string}) {
         </div>
     );
 }
+
+export default Countdown;
