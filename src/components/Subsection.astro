@@ -1,0 +1,26 @@
+---
+interface Props {
+	dark?: boolean;
+}
+
+const { dark } = Astro.props;
+---
+
+<div class:list={{ dark: Boolean(dark) }}>
+	<slot />
+</div>
+
+<style>
+	div {
+		border: 1px solid rgb(var(--accent-light));
+		border-radius: 0.3em;
+		background-color: #13151a3c;
+		display: block;
+		padding: 1rem;
+		margin: 0.5rem 0.2rem;
+	}
+
+    div.dark {
+		background-color: #13151a;
+    }
+</style>

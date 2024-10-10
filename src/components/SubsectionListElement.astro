@@ -1,0 +1,16 @@
+---
+import Subsection from "./Subsection.astro";
+
+---
+
+<li>
+    <Subsection dark={false}>
+        <slot />
+    </Subsection>
+</li>
+
+<style>
+    li {
+        display: block;
+    }
+</style>

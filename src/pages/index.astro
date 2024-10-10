@@ -3,59 +3,17 @@ import Layout from '../layouts/Layout.astro';
 import CardSection from '../components/solid/CardSection';
 import Heading from '../components/Heading.astro';
 import Countdown from '../components/solid/Countdown';
+import Content from './index.mdx';
 ---
 
 <Layout title="Welcome to Sourcetorio">
 	<main>
 		<Heading />
-		<CardSection>
-			<p>Sourcetorio is an unofficial Factorio Server for Source Allies, which is being created to celebrate the release of the <a href="https://store.steampowered.com/app/645390/Factorio_Space_Age/">Factorio: Space Age DLC</a>.</p>
-			<p>The server will launch within minutes of the DLC release on <span class="text-gradient-animated">October 21, 2024</span></p>
-			<br/>
-			<Countdown releaseDateString="2024-10-21T22:30:00.000Z" client:load/>
-		</CardSection>
-		<CardSection title="Getting Started" collapsing={true} startCollapsed={true} client:idle>
-			<p>If you already own the game, awesome! You can skip ahead. If you don't - don't fret!! There's a couple things to know about your unfortunate, Factorioless condition.</p>
-			<ul>
-				<li>The game never goes on sale. This may sound like a bad thing, but at least you'll never be sitting around waiting for a sale, right?</li>
-				<li>You will need the DLC. This is specifically a <span class="text-gradient-animated">Factorio: Space Age</span> server.</li>
-				<li>The game has no DRM, and the server will have Authentication disabled. This means you can very easily use someone else's shared game files if you like.</li>
-			</ul>
-		</CardSection>
-		<CardSection title="Connecting">
-			<p>Simple! Just use the "Connect to Address" menu to connect to my site:</p>
-			<code class="code-block">factorio.qrimby.com</code>
-			<p>Yes, I can confirm that this is a funny dns name.</p>
-		</CardSection>
-		<CardSection title="Da Rulez" collapsing={true} startCollapsed={true} client:idle>
-			<p>You didn't think there would be rules, did you? Or at the very least, you probably expected a familiar "the only rules are no rules!! :P"</p>
-			<br/>
-			<p>NO. That would be RIDICULOUS. This is VERY SERIOUS!</p>
-			<br/>
-			<p>Jokes aside, I'm not planning on banning anyone, so these rules serve more as guidelines for how to have the best time. I've played a LOT of <span class="text-gradient-animated">Factorio</span>, and I have some opinions about how best to approach the game to have a good time.</p>
-			<h3>Rule No. 1</h3>
-			<p>Please use Alt mode. If you press the "Alt" key it shows some helpful icons over machines that let you know what they're up to at a glance.</p>
-			
-			<h3>Rule No. 2</h3>
-			<p>Don't refactor! It's always tempting to tear down some machines and build them back better, but there's a couple really good reasons not to.</p>
-			<ul>
-				<li>They might be someone else's. Please don't "I could do this better" someone's whole dang project.</li>
-				<li>Space is unlimited.* Leave what's there, perhaps repurpose its outputs, and build something new!</li>
-			</ul>
-			<p style="font-size: 0.8rem">* space is actually limited to 4 trillion tiles. If your project needs more than that, please show me - that sounds awesome.</p>
-
-			<h3>Rule No. 3</h3>
-			<p>Please don't look up "optimal" designs or blueprints online. Your own design probably won't be <span class="text-gradient-animated">MegaPerfect</span>, but it will be yours. The whole point of the game is to solve neat logistics puzzles - you wouldn't look up the solution to the Wordle, would you?</span></p>
-
-		</CardSection>
-		<CardSection title="The Last Section">
-			<p>Really? You read this far?</p>
-			<p>Have a medal 🏅</p>
-		</CardSection>
+		<Content></Content>
 	</main>
 </Layout>
 
-<style>
+<style is:global>
 	main {
 		margin: auto;
 		width: 800px;
@@ -69,28 +27,13 @@ import Countdown from '../components/solid/Countdown';
 			max-width: 100%;
 		}
 	}
+	p:not(:last-child) {
+		margin-bottom: 1rem;
+	}
 	.header-logo {
 		max-width: 12rem;
 		height: 100%;
 		display: inline;
-	}
-	h1 {
-		font-size: 4rem;
-		font-weight: 700;
-		line-height: 1;
-		text-align: left;
-		margin-bottom: 1em;
-	}
-	ul {
-		margin: 0.8rem;
-		list-style-type: none;
-	}
-	li {
-		margin: 0.8rem 0;
-		padding: 0.5rem;
-		text-decoration: none;
-		border: 1px solid rgb(var(--accent-light));
-		border-radius: 0.4rem;
 	}
 	a {
 		text-decoration: underline;
@@ -104,17 +47,10 @@ import Countdown from '../components/solid/Countdown';
 	a:hover {
 		color: transparent;
 	}
-	img {
-		width: 100%;
-		box-shadow: inset 0px 0px 3px 0px #000000, 0px -2px 2px -1px #000000, -2px 0px 2px -2px #0f0d0c, 2px 0px 2px -2px #0f0d0c, 0px 2px 2px -2px #ebe6e4;
-	}
 	h3 {
 		margin: 1rem 0 0.2rem;
 		color: rgb(var(--accent-light));
 	}
-</style>
-
-<style is:global>
 	.card-section {
 		position: relative;
 		padding: 1rem;

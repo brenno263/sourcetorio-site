@@ -1,0 +1,96 @@
+---
+
+---
+import Layout from '../layouts/Layout.astro';
+import CardSection from '../components/solid/CardSection';
+import Heading from '../components/Heading.astro';
+import Countdown from '../components/solid/Countdown';
+import Subsection from '../components/Subsection.astro';
+import SubsectionListElement from '../components/SubsectionListElement.astro';
+
+export const components = {
+    li: SubsectionListElement,
+};
+
+<CardSection>
+Sourcetorio is an unofficial Factorio Server for Source Allies,
+which is being created to celebrate the release of the
+[Factorio: Space Age DLC](https://store.steampowered.com/app/645390/Factorio_Space_Age/).
+
+The server will launch at <span class="text-gradient-animated">5:30 PM on October 21, 2024</span> - the day the DLC releases.
+
+<Countdown releaseDateString="2024-10-21T22:30:00.000Z" client:load />
+
+The rest of this site serves as a guide on how to participate on the server and a source of details about the launch event. 
+</CardSection>
+
+<CardSection title="Aquisition" collapsing={true} startCollapsed={false} client:idle>
+Already have the game? Great!
+
+Don't? No worries. Here's a few fun tidbits that can help you out.
+- The game never goes on sale. This may sound bad, but it means that you'll never succumb to "waiting for a sale"-itis.
+- You will need the DLC. This is specifically a Factorio: Space Age server.
+- The game has no DRM, and the server will have authentication disabled.
+This means that you can easily share game files with a friend.
+If you're in need of a copy, DM me on Slack <a>@brennan</a> and I can give a few pointers.
+</CardSection>
+
+<CardSection title="Getting Started" collapsing={true} startCollapsed={false} client:idle>
+First join <a href="https://discord.gg/SFwCsptr">the Discord Server</a>.
+You may notice that this isn't the official SAI Discord - that's so that you can
+invite non-SAI friends if you like.
+
+Configuring the game is not too hard, there's really just two steps.
+### Step One - Version Control
+Factorio servers do not auto-update. So if your game updates you will no longer be able to access the server until I get around to updating it. I highly reccomend configuring your game to not auto-update.
+
+- If you're *not* using a *Steam Copy*, the game gives you control over when it updates.
+<span class="text-gradient-animated">This is awesome.</span> You're good to go.
+
+- If you're on *Steam*, you can use your Steam login to grab a free non-Steam copy from factorio.com.
+
+- If you really want to remain on Steam, you can pin your game version by right-clicking
+the game in your library, going to properties > betas, and selecting a version from the dropdown.
+
+I'll publish the official version to use at server launch, so if it isn't listed here
+please bother me about it <a>@brennan</a> on Slack.
+### Step Two - Logging In
+
+Head to Multiplayer > Connect to Address, and enter in this site's domain name.
+
+    <Subsection dark={true}>
+    factorio.qrimby.com
+    </Subsection>
+
+</CardSection>
+
+<CardSection title="Da Rulez" collapsing={true} startCollapsed={false} client:idle>
+Finally, I get to be a despot!
+
+The rules are pretty simple.
+1. Don't tear down other peoples' stuff. If you think you could do a better job, just build it somewhere else - the map has 4 trillion tiles so you might as well use em.
+2. There is no personal property. Items, vehicles, spaceships, all up for grabs.
+3. Try not to AFK for long periods of time.
+4. Please don't copy/paste blueprints from the internet.
+5. No Biter Sympathizers
+
+Obviously there are exceptions to these (except the last rule). Just try to be chill.
+</CardSection>
+
+<CardSection title="FAQ" collapsing={true} startCollapsed={false} client:idle>
+### I forgot when the event starts. It's all the way at the top of the page.
+
+To ensure that plenty of people can participate, we're going to be starting at 5:30 PM on October 21.
+
+### The DLC drops at midnight - can I get started early?
+
+The server may be up before 5:30, but please don't get started early - I want a coordinated launch from scratch!
+
+### Can I invite my friends?
+Please do! Try to select for friends who you consider <span class="text-gradient-animated">cool</span>😎
+</CardSection>
+
+<CardSection title="The Last Section" collapsing={true} startCollapsed={true} client:idle>
+Really? You read this far?
+Have a medal 🏅
+</CardSection>
